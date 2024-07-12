@@ -116,11 +116,13 @@ class Manager():
         self.cursor_size = 0.033
         self.updated_size = False
         self.cursor = None
-        self.cursor_sphere_duration = 0.1
+        self.cursor_sphere_duration = 0.15
         self.bt = 0
 
     def run_app(self):
         
+        #self.p.open_movie('video.mp4', 60)
+
         while self.p.active:
             self.pos = self.p.pick_mouse_position()
             if self.updated_size:
@@ -136,6 +138,7 @@ class Manager():
                 self.pv_mesh['colors'][self.mask] = SELECTED_COLOR
                 self.p.update_scalars(mesh=self.pv_mesh, scalars=self.pv_mesh['colors'])
             self.p.app.processEvents()
+            #self.p.write_frame()
 
     def process_key_press_event(self, obj, _):
         self.changed = False
