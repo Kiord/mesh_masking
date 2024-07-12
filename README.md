@@ -1,6 +1,11 @@
 # mesh_masking
 A tool for creating vertex mesh masks written in Python
 
+<figure class="video_container">
+  <iframe src="video/video.mp4" frameborder="0" allowfullscreen="true"> 
+</iframe>
+</figure>
+
 ## Usage
 
 `python mesh_masking.py <path to mesh> <path to mask> <-im to store the mask as vertex indices sequence>`
