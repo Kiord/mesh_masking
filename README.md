@@ -1,16 +1,11 @@
 # mesh_masking
 A tool for creating vertex mesh masks written in Python
 
-<video width="320" height="240" controls>
-  <source src="video/video.mp4" type="video/mp4">
-</video>
 
-![](video/video.mp4)
 
-<figure class="video_container">
-  <iframe src="video/video.mp4" frameborder="0" allowfullscreen="true"> 
-</iframe>
-</figure>
+https://github.com/user-attachments/assets/2e65b226-f1aa-4573-b141-2d3aba7d1bce
+
+
 
 ## Usage
 
