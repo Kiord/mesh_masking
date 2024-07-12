@@ -188,7 +188,8 @@ def print_keys():
 @click.command()
 @click.argument('mesh_path', type=click.Path(exists=True), required=True)
 @click.argument('mask_path', type=click.Path(exists=False), required=True)
-def cli(mesh_path, mask_path):
+@click.option('-im', '--index_mask', is_flag=True, type=bool, help='If present, save the mask as a Numpy array of indices instead of a boolean array.')
+def cli(mesh_path, mask_path, index_mask):
 
     print_keys()
 
@@ -201,6 +202,10 @@ def cli(mesh_path, mask_path):
             _, mask = tm_mask_to_npy_mask_one_by_one(mesh, mask_mesh)
         else:
             mask = np.load(mask_path)
+            if mask.dtype != bool or len(mask) != len(mesh.vertices):
+                tmp = np.zeros(mesh.vertices.shape[0], dtype=bool)
+                tmp[mask] = True
+                mask = tmp
     else:
         mask = np.zeros(mesh.vertices.shape[0], dtype=bool)
     
@@ -209,6 +214,10 @@ def cli(mesh_path, mask_path):
 
     if mask_path.endswith('.obj'):
         mask_path = mask_path[:-3] + 'npy'
+    
+    if index_mask:
+        mask = np.where(mask)[0]
+
     np.save(mask_path, mask)
 
 if __name__ == '__main__':
