@@ -3,3 +3,4 @@ pyvistaqt
 trimesh
 numpy
 click
+PyQt5
