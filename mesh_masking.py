@@ -196,12 +196,12 @@ def cli(mesh_path, mask_path, index_mask):
 
     print_keys()
 
-    mesh = tm.load(mesh_path, process=False)
+    mesh = tm.load(mesh_path, process=False, maintain_order=True)
     pv_mesh = pv.wrap(mesh)
 
     if os.path.exists(mask_path):
         if mask_path.endswith('.obj'):
-            mask_mesh = tm.load(mask_path, process=False)
+            mask_mesh = tm.load(mask_path, process=False, maintain_order=True)
             _, mask = tm_mask_to_npy_mask_one_by_one(mesh, mask_mesh)
         else:
             mask = np.load(mask_path)
